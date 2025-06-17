@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt - MDSC</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">MDStudioCode</a>
+            <ul>
+                <li><a href="index.html">Početna</a></li>
+                <li><a href="about.html">O nama</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
+                <li><a href="services.html">Usluge</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact-section">
+            <h1>Kontaktirajte nas</h1>
+            
+            <div class="contact-info">
+                <h2>Kontakt informacije</h2>
+                <p>Email: info@mdsc.rs</p>
+                <p>Telefon: +381 11 123 4567</p>
+                <p>Adresa: Bulevar Mihajla Pupina 10, Beograd</p>
+            </div>
+
+            <form class="contact-form">
+                <h2>Pošaljite nam poruku</h2>
+                <input type="text" name="Email" required  placeholder="Vas Email" >
+                <input type="text" name="Telefon" required placeholder="Vas Telefon" >
+                <input type="text" name="Upit" required placeholder="Vasa poruka" >
+                <button type="submit">Pošalji</button>
+                <class="contact-form" action="baza.php" method="POST">
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 MDSC. Sva prava zadržana.</p>
+    </footer>
+
+    <script src="../js/contact.js"></script>
+</body>
+</html>
