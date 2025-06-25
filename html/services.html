@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MDSC - IT Rešenja</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#2c3e50">
     <style>
         :root {
             --primary-color: #3498db;
@@ -231,6 +234,78 @@
             margin-right: 0.5rem;
         }
 
+        /* Digital Marketing Section */
+        .marketing-section {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .marketing-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+
+        .marketing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .marketing-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 2rem;
+            transition: all 0.3s;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .marketing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .marketing-icon {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .marketing-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .marketing-card ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .marketing-card ul li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .marketing-card ul li:before {
+            content: "✓";
+            color: #2ecc71;
+            position: absolute;
+            left: 0;
+        }
+
+        .marketing-card .price {
+            text-align: center;
+            margin: 1.5rem 0;
+            font-size: 1.8rem;
+        }
+
         /* FAQ Section */
         .faq-section {
             max-width: 1200px;
@@ -398,7 +473,8 @@
                 grid-template-columns: 1fr;
             }
             
-            .pricing-grid {
+            .pricing-grid,
+            .marketing-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -440,9 +516,10 @@
     <header>
         <nav>
             <a href="index.html" class="logo">MDStudioCode</a>
+            <!-- Dodati u svim HTML fajlovima u <nav> -->
             <ul>
-                <li><a href="index.html">Početna</a></li>
-                <li><a href="services.html" class="active">Usluge</a></li>
+                <li><a href="index.html" class="active">Početna</a></li>
+                <li><a href="services.html">Usluge</a></li>
                 <li><a href="about.html">O nama</a></li>
                 <li><a href="contact.html">Kontakt</a></li>
             </ul>
@@ -465,19 +542,21 @@
 
         <section class="pricing-section">
             <h2>Web Sajt Paketi</h2>
+            <h2>Letnja Akcija - 10 %</h2>
             <div class="pricing-grid">
                 <!-- Osnovni Paket -->
                 <div class="pricing-card">
                     <div class="pricing-header">
                         <h3>Osnovni</h3>
-                        <div class="price">€299 <span>+PDV</span></div>
+                        <div class="price">€199 <span>+</span></div>
                     </div>
                     <ul class="features">
-                        <li>Jednostavan sajt (do 5 stranica)</li>
+                        <li>Jednostavan sajt (do 1- 3 stranica)</li>
                         <li>Responsive dizajn</li>
-                        <li>Osnovni SEO</li>
+                        <li>Domen + Hosting</li>
                         <li>Kontakt forma</li>
-                        <li>1 mesec podrške</li>
+                        <li>Do 3 Slike</li>
+                        <li>Opis</li>
                     </ul>
                     <button class="cta-button">Naručite</button>
                 </div>
@@ -486,10 +565,10 @@
                 <div class="pricing-card featured">
                     <div class="pricing-header">
                         <h3>Standardni</h3>
-                        <div class="price">€599 <span>+PDV</span></div>
+                        <div class="price">€499  <span>+</span></div>
                     </div>
                     <ul class="features">
-                        <li>Sajt do 15 stranica</li>
+                        <li>Sajt od 3 do 8 stranica</li>
                         <li>CMS integracija</li>
                         <li>Napredni SEO</li>
                         <li>Analitika</li>
@@ -519,6 +598,69 @@
             </div>
         </section>
 
+        <!-- Digital Marketing Section -->
+        <section class="marketing-section">
+            <h2>Digitalni Marketing Paketi</h2>
+            <p class="text-center">Povećajte svoju online prisutnost i dostignite više klijenata</p>
+            
+            <div class="marketing-grid">
+                <!-- Osnovni Marketing Paket -->
+                <div class="marketing-card">
+                    <div class="marketing-icon">
+                        <i class="fas fa-ad"></i>
+                    </div>
+                    <h3>Starter Paket</h3>
+                    <div class="price">€299 <span>/mesečno</span></div>
+                    <ul>
+                        <li>1 kampanja na društvenim mrežama</li>
+                        <li>Osnovni SEO optimizacija</li>
+                        <li>1 kreativni dizajn mesečno</li>
+                        <li>Mesečni izveštaj</li>
+                        <li>Do 5 ciljanih ključnih reči</li>
+                    </ul>
+                    <button class="cta-button">Naručite</button>
+                </div>
+
+                <!-- Standardni Marketing Paket -->
+                <div class="marketing-card">
+                    <div class="marketing-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Standardni Paket</h3>
+                    <div class="price">€599 <span>/mesečno</span></div>
+                    <ul>
+                        <li>2 kampanje na društvenim mrežama</li>
+                        <li>Napredna SEO optimizacija</li>
+                        <li>3 kreativna dizajna mesečno</li>
+                        <li>Nedeljni izveštaj</li>
+                        <li>Do 15 ciljanih ključnih reči</li>
+                        <li>Google Ads kampanja</li>
+                    </ul>
+                    <button class="cta-button">Naručite</button>
+                </div>
+
+                <!-- Premium Marketing Paket -->
+                <div class="marketing-card">
+                    <div class="marketing-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Premium Paket</h3>
+                    <div class="price">€999 <span>/mesečno</span></div>
+                    <ul>
+                        <li>Neograničene kampanje na društvenim mrežama</li>
+                        <li>Kompletan SEO paket</li>
+                        <li>10+ kreativnih dizajna mesečno</li>
+                        <li>Dnevni izveštaj</li>
+                        <li>Neograničene ključne reči</li>
+                        <li>Google Ads i YouTube kampanje</li>
+                        <li>Email marketing kampanja</li>
+                        <li>Personalizovana strategija</li>
+                    </ul>
+                    <button class="cta-button">Naručite</button>
+                </div>
+            </div>
+        </section>
+
         <section class="faq-section">
             <h2>Često Postavljana Pitanja</h2>
             <div class="faq-container">
@@ -540,6 +682,18 @@
                         <p>Naš paket održavanja uključuje: ažuriranje sadržaja, redovne backup-e, ažuriranje CMS-a i plugina, tehničku podršku i sigurnosne provere.</p>
                     </div>
                 </div>
+                <div class="faq-item">
+                    <button class="faq-question">Koliko dugo traju digitalne marketing kampanje?</button>
+                    <div class="faq-answer">
+                        <p>Preporučujemo minimalni period od 3 meseca za vidljive rezultate. Većina naših klijenata ostaje sa nama 6-12 meseci kako bi ostvarili optimalne rezultate.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Da li možete da pomognete sa sadržajem za sajt?</button>
+                    <div class="faq-answer">
+                        <p>Da, nudimo usluge pisanja profesionalnih tekstova i kreiranja vizuelnog sadržaja kao dodatnu uslugu uz bilo koji od naših paketa.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -547,9 +701,9 @@
             <div class="contact-info">
                 <h2>Kontakt informacije</h2>
                 <p><strong>Email:</strong> info@mdsc.rs</p>
-                <p><strong>Telefon:</strong> +381 11 123 4567</p>
-                <p><strong>Adresa:</strong> Bulevar Mihajla Pupina 10, Beograd</p>
-                <p><strong>Radno vreme:</strong> Ponedeljak - Petak: 09:00 - 17:00</p>
+                <p><strong>Telefon:</strong> +381 60 517 2017</p>
+                <p><strong>Adresa:</strong> Nis, Srbija</p>
+                
             </div>
 
             <form class="contact-form" id="contactForm">
@@ -571,6 +725,7 @@
         <p>&copy; 2023 MDSC. Sva prava zadržana.</p>
     </footer>
 
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script>
         // Mobile Menu Toggle
         document.querySelector('.mobile-menu').addEventListener('click', function() {
@@ -624,10 +779,10 @@
         });
 
         // Pricing card order buttons
-        document.querySelectorAll('.pricing-card .cta-button').forEach(button => {
+        document.querySelectorAll('.pricing-card .cta-button, .marketing-card .cta-button').forEach(button => {
             button.addEventListener('click', function() {
-                const packageName = this.closest('.pricing-card').querySelector('h3').textContent;
-                alert(`Hvala na interesovanju za paket: ${packageName}! Kontaktiraćemo Vas u vezi daljih koraka.`);
+                const packageName = this.closest('.pricing-card, .marketing-card').querySelector('h3').textContent;
+                alert(`Hvala na interesovanju za paket: ${packageName}! Popunite upit i Kontaktiraćemo Vas u vezi daljih koraka.`);
                 
                 // Scroll to contact form
                 document.querySelector('.contact-section').scrollIntoView({
@@ -636,5 +791,22 @@
             });
         });
     </script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const pricingCards = document.querySelectorAll('.pricing-card, .marketing-card');
+    
+    pricingCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.03)';
+            this.style.boxShadow = '0 10px 25px rgba(0,0,0,0.15)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+            this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+        });
+    });
+});
+</script>
 </body>
 </html>
