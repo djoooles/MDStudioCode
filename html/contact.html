@@ -1,51 +1,378 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kontakt - MDSC</title>
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#2c3e50">
+    <style>
+        /* Hero sekcija sa animiranom pozadinom */
+        .contact-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/flagged/photo-1569144654912-5f146d08b98b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            animation: gradientShift 15s infinite alternate;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Kontakt forma */
+        .contact-section {
+            padding: 5rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .contact-info h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .contact-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            margin-right: 1rem;
+            color: var(--primary-color);
+            width: 20px;
+            text-align: center;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+            outline: none;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: var(--dark-color);
+            transform: translateY(-3px);
+        }
+
+        .success-message {
+            text-align: center;
+            padding: 2rem;
+            background: #d4edda;
+            color: #155724;
+            border-radius: 8px;
+            margin-top: 2rem;
+            display: none;
+        }
+
+        /* Responsivnost */
+        @media (max-width: 768px) {
+            .contact-hero {
+                min-height: 40vh;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
+    <!-- Promo Banner -->
+    <div class="promo-banner" id="promoBanner">
+        <div class="banner-content">
+            <div class="banner-text">
+                🎉 <strong>SPECIJALNA PONUDA!</strong> Dobijte besplatnu konsultaciju za vaš IT projekat!
+            </div>
+            <button class="banner-button">Zakaži sastanak</button>
+            <button class="close-banner" id="closeBanner">×</button>
+        </div>
+    </div>
+
+    <header id="mainHeader">
         <nav>
             <a href="index.html" class="logo">MDStudioCode</a>
             <ul>
                 <li><a href="index.html">Početna</a></li>
-                <li><a href="about.html">O nama</a></li>
-                <li><a href="contact.html">Kontakt</a></li>
                 <li><a href="services.html">Usluge</a></li>
+                <li><a href="about.html">O nama</a></li>
+                <li><a href="contact.html" class="active">Kontakt</a></li>
             </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </nav>
     </header>
 
-    <main>
-        <section class="contact-section">
+    <section class="contact-hero">
+        <div class="hero-content">
             <h1>Kontaktirajte nas</h1>
-            
-            <div class="contact-info">
-                <h2>Kontakt informacije</h2>
-                <p>Email: info@mdsc.rs</p>
-                <p>Telefon: +381 11 123 4567</p>
-                <p>Adresa: Bulevar Mihajla Pupina 10, Beograd</p>
-            </div>
+            <p>Imate pitanja ili želite da započnete saradnju? Javite nam se!</p>
+        </div>
+    </section>
 
-            <form class="contact-form">
-                <h2>Pošaljite nam poruku</h2>
-                <input type="text" name="Email" required  placeholder="Vas Email" >
-                <input type="text" name="Telefon" required placeholder="Vas Telefon" >
-                <input type="text" name="Upit" required placeholder="Vasa poruka" >
-                <button type="submit">Pošalji</button>
-                <class="contact-form" action="baza.php" method="POST">
-            </form>
-        </section>
+    <main class="contact-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Stupimo u kontakt</h2>
+                <p>Naš tim je uvek dostupan da odgovori na vaša pitanja</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Kontakt informacije</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Bulevar Mihajla Pupina 10, Beograd</p>
+                    <p><i class="fas fa-phone"></i> +381 11 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> info@mdsc.rs</p>
+                    <p><i class="fas fa-clock"></i> Pon-Pet: 09:00 - 17:00</p>
+                    
+                    <div class="social-links" style="margin-top: 2rem;">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Pošaljite nam poruku</h3>
+                    <form action="baza.php" method="POST">
+                        <div class="form-group">
+                            <label for="email">Email adresa</label>
+                            <input type="email" id="email" name="Email" class="form-control" required placeholder="Vaš Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefon</label>
+                            <input type="text" id="phone" name="Telefon" class="form-control" required placeholder="Vaš Telefon">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Poruka</label>
+                            <textarea id="message" name="Upit" class="form-control" required placeholder="Vaša poruka"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Pošalji poruku</button>
+                    </form>
+                    <div class="success-message" id="successMessage">
+                        <h3>✅ Poruka je poslata!</h3>
+                        <p>Hvala što ste nas kontaktirali. Odgovorićemo u najkraćem mogućem roku.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2023 MDSC. Sva prava zadržana.</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>O Nama</h3>
+                <p>MDSC je vodeći pružalac IT usluga sa više od 10 godina iskustva u industriji. Specijalizovani smo za web razvoj, digitalni marketing i IT konsalting.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Brzi Linkovi</h3>
+                <ul>
+                    <li><a href="index.html">Početna</a></li>
+                    <li><a href="services.html">Usluge</a></li>
+                    <li><a href="about.html">O nama</a></li>
+                    <li><a href="contact.html">Kontakt</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Kontakt</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Bulevar Mihajla Pupina 10, Beograd</p>
+                <p><i class="fas fa-phone"></i> +381 11 123 4567</p>
+                <p><i class="fas fa-envelope"></i> info@mdsc.rs</p>
+                <p><i class="fas fa-clock"></i> Pon-Pet: 09:00 - 17:00</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 MDSC. Sva prava zadržana.</p>
+        </div>
     </footer>
 
-    <script src="../js/contact.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('mainHeader');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Banner functionality
+        document.getElementById('closeBanner')?.addEventListener('click', function() {
+            document.getElementById('promoBanner').style.display = 'none';
+            localStorage.setItem('bannerClosed', 'true');
+        });
+
+        document.querySelector('.banner-button')?.addEventListener('click', function() {
+            window.location.href = 'contact.html';
+            localStorage.setItem('bannerClosed', 'true');
+        });
+
+        if (localStorage.getItem('bannerClosed') === 'true') {
+            document.getElementById('promoBanner').style.display = 'none';
+        }
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu')?.addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('nav ul').classList.toggle('show');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('nav ul').classList.remove('show');
+                document.querySelector('.mobile-menu').classList.remove('active');
+            });
+        });
+
+        // Contact form submission
+        document.querySelector('.contact-form form')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.textContent = 'Šalje se...';
+            submitBtn.disabled = true;
+            
+            // Simulate submission
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'block';
+                this.reset();
+                
+                setTimeout(() => {
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 5000);
+                
+                submitBtn.textContent = 'Pošalji poruku';
+                submitBtn.disabled = false;
+            }, 1500);
+        });
+
+        // Email validation
+        document.querySelector('input[type="email"]')?.addEventListener('blur', function() {
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value)) {
+                this.style.borderColor = 'red';
+            } else {
+                this.style.borderColor = '#ddd';
+            }
+        });
+    </script>
 </body>
 </html>
