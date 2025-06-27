@@ -1,30 +1,64 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.querySelector('.contact-form');
-    
+    const contactForm = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+            e.preventDefault(); // Sprečava osvežavanje stranice
             
-            // Simulacija uspešnog slanja
             const submitBtn = contactForm.querySelector('button[type="submit"]');
-            submitBtn.textContent = 'Šaljem...';
             submitBtn.disabled = true;
-            
-            setTimeout(() => {
-                contactForm.innerHTML = `
-                    <div class="success-message" style="text-align: center; padding: 2rem;">
-                        <h3 style="color: var(--primary-color);">✅ Poruka je poslata!</h3>
-                        <p>Hvala što ste nas kontaktirali. Odgovorićemo u najkraćem mogućem roku.</p>
-                    </div>
-                `;
-            }, 1500);
+            submitBtn.textContent = 'Šaljem...';
+
+            // Prikupljanje podataka iz forme
+            const formData = new FormData(contactForm);
+
+            // Slanje podataka na server
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Greška u mreži');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    // Prikaži poruku o uspehu
+                    successMessage.style.display = 'block';
+                    // Resetuj formu
+                    contactForm.reset();
+                    
+                    // Automatski sakrij poruku nakon 5 sekundi
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 5000);
+                } else {
+                    alert(data.message || 'Došlo je do greške prilikom slanja poruke');
+                }
+            })
+            .catch(error => {
+                console.error('Greška:', error);
+                alert('Došlo je do greške. Molimo pokušajte ponovo kasnije.');
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Pošalji upit';
+            });
         });
     }
-});
-// contact.js - dodajte validaciju
-const emailInput = document.querySelector('input[type="email"]');
-emailInput.addEventListener('blur', () => {
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
-        emailInput.style.borderColor = 'red';
+
+    // Validacija emaila
+    const emailInput = document.getElementById('email');
+    if (emailInput) {
+        emailInput.addEventListener('blur', function() {
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value)) {
+                this.style.borderColor = 'red';
+            } else {
+                this.style.borderColor = '#ddd';
+            }
+        });
     }
 });

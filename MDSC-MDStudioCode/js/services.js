@@ -32,3 +32,4 @@ document.querySelectorAll('.faq-question').forEach(question => {
         question.nextElementSibling.classList.toggle('active');
     });
 });
+

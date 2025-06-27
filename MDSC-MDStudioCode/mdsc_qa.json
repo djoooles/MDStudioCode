@@ -1,0 +1,58 @@
+[
+  {
+    "question": "Dobrodošli na MDSC! Koje usluge nudite?",
+    "answer": "Mi nudimo sledeće usluge: Izrada veb sajtova po meri, SEO optimizacija, Održavanje i ažuriranje sajtova, Konsultacije iz oblasti IT razvoja i digitalnog marketinga, Automatizacija poslovanja (Google Sheets, baze podataka, PHP skripte)."
+  },
+  {
+    "question": "Koliko košta izrada sajta?",
+    "answer": "Cena zavisi od kompleksnosti, ali osnovni sajt sa do 5 stranica košta od 150€."
+  },
+  {
+    "question": "Koliko traje izrada sajta?",
+    "answer": "Obično 7 do 14 dana za jednostavan sajt. Kompleksniji projekti mogu trajati duže."
+  },
+  {
+    "question": "Da li nudite podršku nakon izrade?",
+    "answer": "Da, nudimo mesečne pakete za održavanje koji uključuju Arianna i manja unapređenja."
+  },
+  {
+    "question": "Kako da vas kontaktiram?",
+    "answer": "Možete nas kontaktirati putem emaila: mdsc@primer.com ili putem kontakt forme na sajtu."
+  },
+  {
+    "question": "Da li izrađujete online prodavnice?",
+    "answer": "Da, radimo i jednostavne i kompleksne e-commerce sajtove, uključujući integraciju sa karticama i dostavom."
+  },
+  {
+    "question": "Da li radite sa klijentima van Srbije?",
+    "answer": "Da, imamo iskustvo sa radom u inostranstvu i možemo komunicirati na engleskom jeziku."
+  },
+  {
+    "question": "Mogu li da platim na rate?",
+    "answer": "Da, omogućavamo plaćanje u ratama za projekte veće od 250€, u dogovoru sa klijentom."
+  },
+  {
+    "question": "Da li dobijam fiskalni račun?",
+    "answer": "Da, nakon uplate izdajemo račun sa svim zakonskim elementima."
+  },
+  {
+    "question": "Šta ako se sajt pokvari?",
+    "answer": "Nudimo podršku i hitne intervencije za klijente sa aktivnim paketom održavanja."
+  },
+  {
+    "question": "Da li radite redovno ažuriranje sajta?",
+    "answer": "Da, uz održavanje ažuriramo sadržaj, pluginove i sigurnosne komponente."
+  },
+  {
+    "question": "Možete li mi automatizovati poslovanje?",
+    "answer": "Da, pravimo automatizacije u Google Sheets, PHP i povezivanju sa bazama."
+  },
+  {
+    "question": "Radite li sinhronizaciju sa Google Forms?",
+    "answer": "Da, možemo povezati Google Formu sa Sheets i automatski obrađivati podatke."
+  },
+  {
+    "question": "Imam dodatna pitanja",
+    "answer": "Slobodno ih postavite ovde. MDSC Asistent je tu da pomogne!"
+  }
+]

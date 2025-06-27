@@ -6,46 +6,436 @@
     <title>Kontakt - MDSC</title>
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="theme-color" content="#2c3e50">
+    <style>
+        /* Hero sekcija sa animiranom pozadinom */
+        .contact-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/flagged/photo-1569144654912-5f146d08b98b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            animation: gradientShift 15s infinite alternate;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            animation: text-glow 3s infinite alternate;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Kontakt forma */
+        .contact-section {
+            padding: 5rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            animation: float 6s ease-in-out infinite;
+            border: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .contact-info:hover {
+            animation: pulse-glow 2s infinite, float 6s ease-in-out infinite;
+            border: 1px solid rgba(52, 152, 219, 0.6);
+        }
+
+        .contact-info h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .contact-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            margin-right: 1rem;
+            color: var(--primary-color);
+            width: 20px;
+            text-align: center;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .contact-info p:nth-child(2) i { animation-delay: 0.2s; }
+        .contact-info p:nth-child(3) i { animation-delay: 0.4s; }
+        .contact-info p:nth-child(4) i { animation-delay: 0.6s; }
+        .contact-info p:nth-child(5) i { animation-delay: 0.8s; }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(52, 152, 219, 0.3);
+            animation: neon-border 4s infinite alternate;
+        }
+
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(52, 152, 219, 0.1) 0%,
+                rgba(52, 152, 219, 0) 50%,
+                rgba(52, 152, 219, 0.1) 100%
+            );
+            transform: rotate(30deg);
+            animation: shine 5s infinite;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+            outline: none;
+            animation: pulse-glow 1.5s infinite;
+            border-color: #00ffff;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            animation: pulse-glow 2s infinite alternate;
+        }
+
+        .submit-btn:hover {
+            background: var(--dark-color);
+            transform: translateY(-3px) scale(1.02);
+            animation: pulse-glow 1s infinite alternate;
+        }
+
+        .submit-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0.3) 0%,
+                rgba(255, 255, 255, 0) 50%,
+                rgba(255, 255, 255, 0.3) 100%
+            );
+            transform: rotate(30deg);
+            animation: shine 3s infinite;
+        }
+
+        .success-message {
+            text-align: center;
+            padding: 2rem;
+            background: #d4edda;
+            color: #155724;
+            border-radius: 8px;
+            margin-top: 2rem;
+            display: none;
+            animation: text-glow 2s infinite alternate, float 4s ease-in-out infinite;
+            border: 1px solid rgba(46, 204, 113, 0.5);
+        }
+
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+        }
+
+        /* Futurističke animacije */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 10px rgba(52, 152, 219, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(52, 152, 219, 0.8); }
+        }
+
+        @keyframes neon-border {
+            0%, 100% {
+                border-color: #3498db;
+                box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+            }
+            50% {
+                border-color: #00ffff;
+                box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+            }
+        }
+
+        @keyframes text-glow {
+            0%, 100% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+            50% { text-shadow: 0 0 15px rgba(255, 255, 255, 0.9); }
+        }
+
+        @keyframes shine {
+            0% { transform: rotate(30deg) translate(-30%, -30%); }
+            100% { transform: rotate(30deg) translate(30%, 30%); }
+        }
+
+        /* Hover efekti za socijalne linkove */
+        .social-links a {
+            display: inline-block;
+            transition: all 0.3s ease;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2) translateY(-5px);
+            animation: pulse-glow 1s infinite, float 4s ease-in-out infinite;
+        }
+
+        .social-links a:nth-child(1) { animation-delay: 0.1s; }
+        .social-links a:nth-child(2) { animation-delay: 0.2s; }
+        .social-links a:nth-child(3) { animation-delay: 0.3s; }
+        .social-links a:nth-child(4) { animation-delay: 0.4s; }
+
+        /* Responsivnost */
+        @media (max-width: 768px) {
+            .contact-hero {
+                min-height: 40vh;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Isključivanje animacija na mobilnim uređajima */
+            .contact-info, .contact-form { 
+                animation: none !important; 
+            }
+            .contact-info:hover { 
+                animation: none !important; 
+            }
+            .submit-btn { 
+                animation: none !important; 
+            }
+            .submit-btn:hover { 
+                animation: none !important; 
+            }
+            .contact-info i {
+                animation: none !important;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
+    <!-- Promo Banner -->
+    <div class="promo-banner" id="promoBanner">
+        <div class="banner-content">
+            <div class="banner-text">
+                🎉 <strong>SPECIJALNA PONUDA!</strong> Dobijte besplatnu konsultaciju za vaš IT projekat!
+            </div>
+            <button class="banner-button">Zakaži sastanak</button>
+            <button class="close-banner" id="closeBanner">×</button>
+        </div>
+    </div>
+
+    <header id="mainHeader">
         <nav>
             <a href="index.html" class="logo">MDStudioCode</a>
             <ul>
                 <li><a href="index.html">Početna</a></li>
-                <li><a href="about.html">O nama</a></li>
-                <li><a href="contact.html">Kontakt</a></li>
                 <li><a href="services.html">Usluge</a></li>
+                <li><a href="about.html">O nama</a></li>
+                <li><a href="contact.html" class="active">Kontakt</a></li>
             </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </nav>
     </header>
 
-    <main>
-        <section class="contact-section">
+    <section class="contact-hero">
+        <div class="hero-content">
             <h1>Kontaktirajte nas</h1>
-            
-            <div class="contact-info">
-                <h2>Kontakt informacije</h2>
-                <p>Email: info@mdsc.rs</p>
-                <p>Telefon: +381 11 123 4567</p>
-                <p>Adresa: Bulevar Mihajla Pupina 10, Beograd</p>
-            </div>
+            <p>Imate pitanja ili želite da započnete saradnju? Javite nam se!</p>
+        </div>
+    </section>
 
-            <form class="contact-form">
-                <h2>Pošaljite nam poruku</h2>
-                <input type="text" name="Email" required  placeholder="Vas Email" >
-                <input type="text" name="Telefon" required placeholder="Vas Telefon" >
-                <input type="text" name="Upit" required placeholder="Vasa poruka" >
-                <button type="submit">Pošalji</button>
-                <class="contact-form" action="baza.php" method="POST">
-            </form>
-        </section>
+    <main class="contact-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Stupimo u kontakt</h2>
+                <p>Naš tim je uvek dostupan da odgovori na vaša pitanja</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Kontakt informacije</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Bulevar Mihajla Pupina 10, Beograd</p>
+                    <p><i class="fas fa-phone"></i> +381 11 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> info@mdsc.rs</p>
+                    <p><i class="fas fa-clock"></i> Pon-Pet: 09:00 - 17:00</p>
+                    
+                    <div class="social-links" style="margin-top: 2rem;">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <form id="contactForm" method="post" action="../php/baza.php">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tel">Telefon:</label>
+                        <input type="tel" id="tel" name="tel" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="upit">Vaša poruka:</label>
+                        <textarea id="upit" name="upit" class="form-control" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Pošalji upit</button>
+                    <div id="successMessage" class="success-message">
+                        <h3>✅ Poruka je poslata!</h3>
+                        <p>Hvala što ste nas kontaktirali. Odgovorićemo u najkraćem mogućem roku.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2023 MDSC. Sva prava zadržana.</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>O Nama</h3>
+                <p>MDSC je vodeći pružalac IT usluga sa više od 10 godina iskustva u industriji. Specijalizovani smo za web razvoj, digitalni marketing i IT konsalting.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Brzi Linkovi</h3>
+                <ul>
+                    <li><a href="index.html">Početna</a></li>
+                    <li><a href="services.html">Usluge</a></li>
+                    <li><a href="about.html">O nama</a></li>
+                    <li><a href="contact.html">Kontakt</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Kontakt</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Bulevar Mihajla Pupina 10, Beograd</p>
+                <p><i class="fas fa-phone"></i> +381 11 123 4567</p>
+                <p><i class="fas fa-envelope"></i> info@mdsc.rs</p>
+                <p><i class="fas fa-clock"></i> Pon-Pet: 09:00 - 17:00</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 MDSC. Sva prava zadržana.</p>
+        </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <script src="../js/contact.js"></script>
 </body>
 </html>

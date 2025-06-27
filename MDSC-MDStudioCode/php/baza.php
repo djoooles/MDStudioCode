@@ -1,25 +1,26 @@
 <?php
-    $baza = mysqli_connect("localhost", "root", "", "web_shop");
+header('Content-Type: application/json');
 
-    if(! $baza){
-        die("Greska pri konekciji" .mysqli_connect_error());
-    }
+// Provera da li su podaci poslati POST metodom
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'] ?? '';
+    $tel = $_POST['tel'] ?? '';
+    $upit = $_POST['upit'] ?? '';
     
+    // Ovde dodajte logiku za čuvanje podataka u bazu
+    
+    // Simulacija uspešnog slanja
+    echo json_encode([
+        'success' => true,
+        'message' => 'Poruka je uspešno poslata!'
+    ]);
+    exit;
+}
 
-
-    $email = $_POST['Email'];
-    $telefon = $_POST['Telefon'];
-    $upit = $_POST['Upit'];
-
-    $baza->query("INSERT INTO sajt (email, telefon, upit) VALUES ('$email', '$telefon', '$upit') ");
-
-
-
-
-
-
-
-
-
-
+// Ako nije POST zahtev
+echo json_encode([
+    'success' => false,
+    'message' => 'Nevalidan zahtev'
+]);
+exit;
 ?>
